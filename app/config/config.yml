@@ -66,3 +66,8 @@ swiftmailer:
     username:  "%mailer_user%"
     password:  "%mailer_password%"
     spool:     { type: memory }
+
+#OpenMindReader Configuration    
+app:
+    file:
+        folder_path: "/media/disque_storex/Divers/open_mind/"
