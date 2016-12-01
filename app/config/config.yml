@@ -72,6 +72,9 @@ assetic:
     use_controller: '%kernel.debug%'
     filters:
         cssrewrite: ~
+    assets:
+        jquery:
+            input: "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
 
 #OpenMindReader Configuration    
 app:
