@@ -23,6 +23,14 @@ class Configuration implements ConfigurationInterface
 	                    ->end()
                     ->end()
                 ->end() //file
+                ->arrayNode('assets')
+                    ->children()
+                        ->scalarNode('output')
+                        	->info('Path to the folder were symfony assets will be dumped.')
+		                    ->isRequired()
+		                    ->cannotBeEmpty()
+	                    ->end()
+                ->end() //assets
             ->end()
         ;
 
