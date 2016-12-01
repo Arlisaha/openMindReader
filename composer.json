@@ -49,7 +49,10 @@
             "@symfony-scripts"
         ],
         "post-update-cmd": [
-            "@symfony-scripts"
+            "@symfony-scripts",
+            "rm -rf web/openmindparser/",
+            "mkdir -p web/openmindparser/",
+            "ln -s vendor/arlisaha/open-mind-parser/img/ web/openmindparser/"
         ]
     },
     "extra": {
