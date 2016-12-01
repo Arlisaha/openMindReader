@@ -1,3 +1,7 @@
-app:
-    resource: "@AppBundle/Resources/config/routing/routing.yml"
+FileController:
+    resource: "@AppBundle/Resources/config/routing/file.yml"
     prefix: /
+    
+VisualizerController:
+    resource: "@AppBundle/Resources/config/routing/visualizer.yml"
+    prefix: /visualizer

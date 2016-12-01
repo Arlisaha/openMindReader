@@ -1,0 +1,3 @@
+file_list:
+    path:      /
+    defaults:  { _controller: AppBundle:File:list }

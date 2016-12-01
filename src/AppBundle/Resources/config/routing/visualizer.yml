@@ -1,0 +1,3 @@
+visualizer_html:
+    path:      /html/{fileName}
+    defaults:  { _controller: AppBundle:Visualizer:html }
