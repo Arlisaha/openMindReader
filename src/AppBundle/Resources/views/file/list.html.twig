@@ -1,0 +1,9 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block body %}
+	<ul>
+		{% for file in file_list %}
+			<li><a href="{{ path('visualizer_html', {'fileName': file}) }}">{{ file }}</a></li>
+		{% endfor %}
+	</ul>
+{% endblock %}

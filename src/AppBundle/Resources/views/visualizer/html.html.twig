@@ -1,0 +1,14 @@
+{% extends 'AppBundle::layout.html.twig' %}
+
+{% block javascripts %}
+    {% javascripts '@AppBundle/Resources/public/js/*' %}
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    <script>
+    	document.onload = function(){CollapsibleLists.apply()};
+    </script>
+{% endblock %}
+
+{% block body %}
+	{{ html_string|raw }}
+{% endblock %}
