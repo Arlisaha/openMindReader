@@ -24,9 +24,9 @@ class Configuration implements ConfigurationInterface
                     ->end()
                 ->end() //file
                 ->arrayNode('assets')
+                	->info('Path to the folder were assets will be dumped for open mind parser lib.')
                     ->children()
-                        ->scalarNode('output')
-                        	->info('Path to the folder were symfony assets will be dumped.')
+                        ->scalarNode('images')
 		                    ->isRequired()
 		                    ->cannotBeEmpty()
 	                    ->end()

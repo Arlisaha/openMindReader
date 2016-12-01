@@ -23,6 +23,6 @@ class AppExtension extends Extension
 	    $config = $this->processConfiguration($configuration, $configs);
 	    
 	    $container->setParameter('app.file.folder_path', $config['file']['folder_path']);
-	    $container->setParameter('app.assets.output', $config['assets']['output']);
+	    $container->setParameter('app.assets.images', $config['assets']['images']);
     }
 }
