@@ -5,10 +5,11 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use OpenMindParser\Converters\HTML\GenericHTMLConverter;
+use Symfony\Component\HttpFoundation\Request;
 
 class VisualizerController extends Controller
 {
-    public function htmlAction($fileName)
+    public function htmlAction(Request $request, $fileName)
     {
 		$filePath = $this->container->getParameter('app.file.folder_path').$fileName;
 		
@@ -17,7 +18,7 @@ class VisualizerController extends Controller
 		}
 		
 		$callback = function($fullName, $options = null){
-			return $options[0]->getUrl($options[1].$fullName);
+			return str_replace('/app_dev.php', '', $options[0]->getUriForPath($options[1].$fullName));
 		};
 		
 		$htmlDocument = $this->container->get('open_mind_reader.converter.html')->convert(
@@ -40,7 +41,7 @@ class VisualizerController extends Controller
 					GenericHTMLConverter::PATH_ICON_KEY    => [
 						GenericHTMLConverter::CALLBACK_PATH_ICON_KEY => $callback,
 						GenericHTMLConverter::OPTIONS_PATH_ICON_KEY  => [
-							$this->get('assets.packages'), 
+							$request, 
 							$this->container->getParameter('app.assets.images'),
 						],
 					],
