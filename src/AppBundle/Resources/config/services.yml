@@ -1,10 +1,9 @@
 services:
-    open_mind_reader.parser:
+    app.parser:
         class: OpenMindParser\Parser
         
-    open_mind_reader.converter.html:
+    app.converter.html:
         class: OpenMindParser\Converters\HTML\GenericHTMLConverter
         
-    open_mind_reader.converter.json:
+    app.converter.json:
         class: OpenMindParser\Converters\JSON\GenericJSONConverter
-        
