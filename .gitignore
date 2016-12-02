@@ -34,6 +34,7 @@
 /web/openmindparser/
 /web/images/
 /web/js/
+/web/css/
 
 # Assets managed by Bower
 /web/assets/vendor/
