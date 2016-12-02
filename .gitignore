@@ -32,6 +32,8 @@
 /web/uploads/
 /web/assetic/
 /web/openmindparser/
+/web/images/
+/web/js/
 
 # Assets managed by Bower
 /web/assets/vendor/
