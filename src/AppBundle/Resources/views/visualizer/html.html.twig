@@ -15,12 +15,5 @@
 {% endblock %}
 
 {% block body %}
-	{% set replace_array = {} %}
-	{% for file in img_files %}
-		{% set replace_key = '%'~file~'%' %}
-		{% set replace_string = asset('openmindparser/img/'~file) %}
-		{% set replace_array = replace_array|merge({(replace_key): (replace_string)}) %}
-	{% endfor %}
-
-	{{ html_string|replace(replace_array)|raw }}
+	{{ html_string|raw }}
 {% endblock %}

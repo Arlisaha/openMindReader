@@ -18,7 +18,7 @@ class VisualizerController extends Controller
 		}
 		
 		$callback = function($fullName, $options = null){
-			return '%'.$fullName.'%';
+			return $options['twig']->createTemplate(sprintf('{{asset("%s%s")}}', $options['path'], $fullName))->render([]);
 		};
 		
 		$htmlDocument = $this->container->get('app.converter.html')->convert(
@@ -40,16 +40,17 @@ class VisualizerController extends Controller
 					GenericHTMLConverter::DISPLAY_ICON_KEY => true,
 					GenericHTMLConverter::PATH_ICON_KEY    => [
 						GenericHTMLConverter::CALLBACK_PATH_ICON_KEY => $callback,
+						GenericHTMLConverter::OPTIONS_PATH_ICON_KEY   => [
+							'twig' => $this->get('twig'),
+							'path' => $this->getParameter('app.assets.images'),
+						],
 					],
 				],
 			]
 		);
 		
-		preg_match_all('~="%([^\s]+)%"~', $htmlDocument->saveHTML(), $imgsFiles);
-		
         return $this->render('AppBundle::visualizer/html.html.twig', [
             'html_string' => $htmlDocument->saveHTML(),
-            'img_files'   => array_unique($imgsFiles[1]),
         ]);
     }
 }
