@@ -70,8 +70,13 @@ swiftmailer:
 assetic:
     debug:          '%kernel.debug%'
     use_controller: '%kernel.debug%'
+    bundles:        [AppBundle]
     filters:
         cssrewrite: ~
+        lessphp:
+            file: '%kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php'
+            formatter: "compressed"
+            preserve_comments: false
     assets:
         jquery:
             input: "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
