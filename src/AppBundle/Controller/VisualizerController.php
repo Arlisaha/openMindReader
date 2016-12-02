@@ -18,10 +18,10 @@ class VisualizerController extends Controller
 		}
 		
 		$callback = function($fullName, $options = null){
-			return str_replace('/app_dev.php', '', $options[0]->getUriForPath($options[1].$fullName));
+			return '%'.$fullName.'%';
 		};
 		
-		$htmlDocument = $this->container->get('open_mind_reader.converter.html')->convert(
+		$htmlDocument = $this->container->get('app.converter.html')->convert(
 			$filePath, 
 			[
 				GenericHTMLConverter::MAIN_TAG_KEY => [
@@ -40,17 +40,16 @@ class VisualizerController extends Controller
 					GenericHTMLConverter::DISPLAY_ICON_KEY => true,
 					GenericHTMLConverter::PATH_ICON_KEY    => [
 						GenericHTMLConverter::CALLBACK_PATH_ICON_KEY => $callback,
-						GenericHTMLConverter::OPTIONS_PATH_ICON_KEY  => [
-							$request, 
-							$this->container->getParameter('app.assets.images'),
-						],
 					],
 				],
 			]
 		);
 		
+		preg_match_all('~="%([^\s]+)%"~', $htmlDocument->saveHTML(), $imgsFiles);
+		
         return $this->render('AppBundle::visualizer/html.html.twig', [
             'html_string' => $htmlDocument->saveHTML(),
+            'img_files'   => array_unique($imgsFiles[1]),
         ]);
     }
 }

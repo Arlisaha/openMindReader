@@ -1,7 +1,9 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
 {% block javascripts %}
-    {% javascripts '@AppBundle/Resources/public/js/*' %}
+    {% javascripts 
+    	'@AppBundle/Resources/public/js/*'
+    	'@jquery' %}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
@@ -10,5 +12,12 @@
 {% endblock %}
 
 {% block body %}
-	{{ html_string|raw }}
+	{% set replace_array = {} %}
+	{% for file in img_files %}
+		{% set replace_key = '%'~file~'%' %}
+		{% set replace_string = asset('openmindparser/img/'~file) %}
+		{% set replace_array = replace_array|merge({(replace_key): (replace_string)}) %}
+	{% endfor %}
+
+	{{ html_string|replace(replace_array)|raw }}
 {% endblock %}
