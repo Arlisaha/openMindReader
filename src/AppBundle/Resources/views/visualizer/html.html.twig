@@ -3,11 +3,14 @@
 {% block javascripts %}
     {% javascripts 
     	'@AppBundle/Resources/public/js/*'
-    	'@jquery' %}
+    	'@jquery' 
+	%}
         <script src="{{ asset_url }}"></script>
     {% endjavascripts %}
     <script>
-    	document.onload = function(){CollapsibleLists.apply()};
+    	$(function() {
+		    CollapsibleLists.apply(true)
+		});
     </script>
 {% endblock %}
 
