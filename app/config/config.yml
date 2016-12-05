@@ -77,6 +77,10 @@ assetic:
             file: '%kernel.root_dir%/../vendor/leafo/lessphp/lessc.inc.php'
             formatter: "compressed"
             preserve_comments: false
+            presets:
+                header_background_color: "#F23E62"
+                body_background_color: "#282930"
+                footer_background_color: "#DB3959"
     assets:
         jquery:
             input: "%kernel.root_dir%/../vendor/components/jquery/jquery.js"

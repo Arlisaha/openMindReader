@@ -1,1 +1,13 @@
 {% extends '::base.html.twig' %}
+
+{% block body %}
+	{% block header %}
+		{% include 'AppBundle::header.html.twig' with {breadcrumb: block('breadcrumb'), header_title: block('header_title')} %}
+	{% endblock %}
+	<main>
+		{% block content %}{% endblock %}
+	</main>
+	{% block footer %}
+		{% include 'AppBundle::footer.html.twig' %}
+	{% endblock %}
+{% endblock %}

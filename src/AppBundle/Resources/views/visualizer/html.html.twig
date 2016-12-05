@@ -16,7 +16,7 @@
 
 {% block stylesheets %}
 	{% stylesheets 
-		'@AppBundle/Resources/public/less/collapsiblelist.less'
+		'@AppBundle/Resources/public/less/layout.less'
 		'@AppBundle/Resources/public/less/htmlvisualizer.less'
 		filter='lessphp'
     	output='css/htmlvisualizer.css'
@@ -29,7 +29,14 @@
 	{{ file_name }}
 {% endblock %}
 
-{% block body %}
+{% block breadcrumb %}
+{% endblock %}
+
+{% block header_title %}
+	{{ file_name|replace({ ('.' ~ file_name|split('.')|last): '' }) }}
+{% endblock %}
+
+{% block content %}
 	<div class="listContainer">
 		{{ html_string|raw }}
 	</div>

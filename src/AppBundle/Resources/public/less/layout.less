@@ -1,0 +1,81 @@
+html {
+	background-color: @body_background_color;
+	height: 100%;
+	font-family: 'Ubuntu',Tahoma,sans-serif;
+	
+	body {
+		margin: 0;
+		height: 100%;
+		
+		q {
+			quotes: "“" "”" "‘" "’";
+			
+			:before {
+				content: open-quote;
+			}
+			:after {
+				content: close-quote;
+			}
+		}
+		
+		header {
+			width: 100%;
+			height: 40px;
+			background-color: @header_background_color;
+			position: relative;
+			top: -16px;
+			box-shadow: 0 1px 50px @header_background_color;
+			margin-bottom: -5px;
+			
+			#breadcrumb {
+				float: left;
+				clear: both;
+				display: inline-block;
+				padding: 9px;
+			}
+			
+			#headerTitle {
+				text-align: right;
+				float: right;
+				padding: 9px;
+				display: inline-block;
+				color: white;
+			}
+		}
+		
+		main {
+			min-height: 100%;
+			margin-bottom: -20px;
+		}
+		
+		footer {
+			clear: both;
+			padding: 0 0 20px;
+			font-size: 0.9em;
+			position: relative;
+			bottom: 0;
+			background-color: @footer_background_color;
+			box-shadow: inset 0 1px 6px;
+			border-radius: 10px 10px 0 0 ;
+			
+			#text {
+				width: 80%;
+				color: #FFFFFF;
+				font-size: 0.9em;
+				margin: auto;
+				padding-top: 12px;
+				
+				a {
+				    color: #114393;
+				    text-decoration: none;
+				}
+			}
+		}
+	}
+}
+		
+footer, #content:after {
+	content: "";
+	display: block;
+	height: 20px;
+}
