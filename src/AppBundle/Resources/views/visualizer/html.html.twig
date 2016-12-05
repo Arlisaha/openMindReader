@@ -16,9 +16,10 @@
 
 {% block stylesheets %}
 	{% stylesheets 
-		'@AppBundle/Resources/public/less/*'
+		'@AppBundle/Resources/public/less/collapsiblelist.less'
+		'@AppBundle/Resources/public/less/htmlvisualizer.less'
 		filter='lessphp'
-    	output='css/all.css'
+    	output='css/htmlvisualizer.css'
 	%}
 		<link href="{{ asset_url }}" rel="stylesheet" media="screen" type="text/css" />
 	{% endstylesheets %}
@@ -29,5 +30,7 @@
 {% endblock %}
 
 {% block body %}
-	{{ html_string|raw }}
+	<div class="listContainer">
+		{{ html_string|raw }}
+	</div>
 {% endblock %}
