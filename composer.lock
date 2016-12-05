@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "8cf0baab44894f3da92048f5a44edafb",
-    "content-hash": "c5f08898b795b4738f1f0c6da652e5da",
+    "hash": "16d344050c0481e4e88cd9057abdda1e",
+    "content-hash": "8de1041c9bef666a71a489902b45a69a",
     "packages": [
         {
             "name": "arlisaha/open-mind-parser",
-            "version": "1.3.0",
+            "version": "1.4.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Arlisaha/openMindParser.git",
-                "reference": "1018d505955396a07fa6100041b9f8e08fbb8d26"
+                "reference": "dfc8a89a5c626a021e02a6bfbe5a36dd0b7fb3d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Arlisaha/openMindParser/zipball/1018d505955396a07fa6100041b9f8e08fbb8d26",
-                "reference": "1018d505955396a07fa6100041b9f8e08fbb8d26",
+                "url": "https://api.github.com/repos/Arlisaha/openMindParser/zipball/dfc8a89a5c626a021e02a6bfbe5a36dd0b7fb3d3",
+                "reference": "dfc8a89a5c626a021e02a6bfbe5a36dd0b7fb3d3",
                 "shasum": ""
             },
             "require": {
@@ -45,7 +45,7 @@
             ],
             "description": "A parser for \".mm\" files (openMind format) to build objects out of it in order to then draw it or export it in another format.",
             "homepage": "https://github.com/Arlisaha/openMindParser",
-            "time": "2016-12-01 09:00:19"
+            "time": "2016-12-05 11:21:37"
         },
         {
             "name": "components/jquery",
