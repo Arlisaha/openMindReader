@@ -33,7 +33,7 @@
 {% endblock %}
 
 {% block header_title %}
-	{{ file_name|replace({ ('.' ~ file_name|split('.')|last): '' }) }}
+	<q>{{ file_name|replace({ ('.' ~ file_name|split('.')|last): '' }) }}</q>
 {% endblock %}
 
 {% block content %}

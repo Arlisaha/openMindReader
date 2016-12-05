@@ -1,9 +1,30 @@
 {% extends 'AppBundle::layout.html.twig' %}
 
-{% block body %}
+{% block stylesheets %}
+	{% stylesheets 
+		'@AppBundle/Resources/public/less/layout.less'
+		filter='lessphp'
+    	output='css/listfile.css'
+	%}
+		<link href="{{ asset_url }}" rel="stylesheet" media="screen" type="text/css" />
+	{% endstylesheets %}
+{% endblock %}
+
+{% block title %}
+	File selection
+{% endblock %}
+
+{% block breadcrumb %}
+{% endblock %}
+
+{% block header_title %}
+	Choose a file to display in a collapsible list.
+{% endblock %}
+
+{% block content %}
 	<ul>
 		{% for file in file_list %}
-			<li><a href="{{ path('visualizer_html', {'fileName': file}) }}">{{ file }}</a></li>
+			<li><a href="{{ path('visualizer_html', {'fileName': file}) }}">{{ file|replace({ ('.' ~ file|split('.')|last): '' }) }}</a></li>
 		{% endfor %}
 	</ul>
 {% endblock %}

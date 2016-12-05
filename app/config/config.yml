@@ -81,6 +81,8 @@ assetic:
                 header_background_color: "#F23E62"
                 body_background_color: "#282930"
                 footer_background_color: "#DB3959"
+                footer_link_color: "#114393"
+                link_color: "#6fb3e8"
     assets:
         jquery:
             input: "%kernel.root_dir%/../vendor/components/jquery/jquery.js"
