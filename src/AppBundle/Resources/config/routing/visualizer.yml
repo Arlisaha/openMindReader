@@ -1,3 +1,7 @@
 visualizer_html:
     path:      /html/{fileName}
     defaults:  { _controller: AppBundle:Visualizer:html }
+    
+visualizer_canvas:
+    path:      /canvas/{fileName}
+    defaults:  { _controller: AppBundle:Visualizer:canvas }
