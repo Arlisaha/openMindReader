@@ -49,6 +49,13 @@ class VisualizerController extends Controller
 			]
 		);
 		
+		$firstChild = $htmlDocument->firstChild;
+		foreach($firstChild->attributes as $attribute) {
+			if($attribute->nodeName === 'class') {
+				$attribute->nodeValue = 'rootList';
+			}
+		}
+		
         return $this->render('AppBundle::visualizer/html.html.twig', [
             'html_string' => $htmlDocument->saveHTML(),
             'file_name'   => $fileName,
