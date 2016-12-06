@@ -1,5 +1,7 @@
+{% import 'AppBundle::macro.html.twig' as macro %}
+
 <header>
 	<menu></menu>
-	<span id="breadcrumb">{{ breadcrumb|raw }}</span>
+	<span id="breadcrumb">{{ macro.breadcrumb(breadcrumb) }}</span>
 	<span id="headerTitle">{{ header_title|raw }}</span>
 </header>

@@ -14,8 +14,14 @@
 	File selection
 {% endblock %}
 
-{% block breadcrumb %}
-{% endblock %}
+{% set breadcrumb = 
+	{ 
+		'Home': { 
+			'route': 'file_list', 
+			'params': {} 
+		}
+	} 
+%}
 
 {% block header_title %}
 	Choose a file to display in a collapsible list.

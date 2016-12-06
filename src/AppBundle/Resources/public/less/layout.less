@@ -19,7 +19,7 @@ html {
 		}
 				
 		a {
-		    color: @link_color;
+		    color: @body_link_color;
 		    text-decoration: none;
 		}
 		
@@ -31,12 +31,31 @@ html {
 			top: -16px;
 			box-shadow: 0 1px 50px @header_background_color;
 			margin-bottom: -5px;
+				
+			a {
+			    color: @header_link_color;
+			    text-decoration: underline;
+			}
 			
 			#breadcrumb {
 				float: left;
 				clear: both;
 				display: inline-block;
 				padding: 9px;
+				
+				.breadcrumbSeparator {
+					color: #FFFFFF;
+					text-shadow: 1px 0px 12px #FFFFFF;
+				}
+				
+				.breadcrumbPiece {
+					color: @header_link_color;
+		    		text-decoration: underline;
+				}
+			
+				.breadcrumbLast {
+					color: @header_link_color;
+				}
 			}
 			
 			#headerTitle {

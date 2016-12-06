@@ -29,8 +29,18 @@
 	{{ file_name }}
 {% endblock %}
 
-{% block breadcrumb %}
-{% endblock %}
+{% set breadcrumb = 
+	{ 
+		'Home': { 
+			'route': 'file_list', 
+			'params': {} 
+		}, 
+		'Visualize as list': { 
+			'route': 'visualizer_html', 
+			'params': { 'fileName': file_name } 
+		} 
+	} 
+%}
 
 {% block header_title %}
 	<q>{{ file_name|replace({ ('.' ~ file_name|split('.')|last): '' }) }}</q>

@@ -2,7 +2,7 @@
 
 {% block body %}
 	{% block header %}
-		{% include 'AppBundle::header.html.twig' with {breadcrumb: block('breadcrumb'), header_title: block('header_title')} %}
+		{% include 'AppBundle::header.html.twig' with {breadcrumb: breadcrumb, header_title: block('header_title')} %}
 	{% endblock %}
 	<main>
 		{% block content %}{% endblock %}

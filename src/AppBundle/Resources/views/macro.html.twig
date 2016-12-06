@@ -1,0 +1,10 @@
+{% macro breadcrumb(breadcrumb) %}
+	{% for link_name, link_route in breadcrumb %}
+		{% if not loop.last %}
+			<a class="breadcrumbPiece" href="{{ path(link_route['route'], link_route['params']) }}">{{ link_name }}</a>
+			&nbsp;<span class="breadcrumbSeparator">></span>&nbsp;
+		{% else %}
+			<span class="breadcrumbLast">{{ link_name }}</span>
+		{% endif %}
+	{% endfor %}
+{% endmacro %}
