@@ -9,35 +9,42 @@ use \RecursiveRegexIterator;
 
 class TreeBuilder
 {
+	/**
+	 * Build the file tree.
+	 * 
+	 * @param String $directoryPath : The path of the current directory whom files are beeing listed from.
+	 * @param String $filesExtension : the files extension(s) we want to display. It's a regex used in a preg_match on each file.
+	 * 
+	 * @return array : e representation of the file tree.
+	 */
 	public function build($directoryPath, $filesExtension = '.*')
 	{
-		$directory = new RecursiveDirectoryIterator($directoryPath);
-		$iterator = new RecursiveIteratorIterator($directory);
-		$regex = new RegexIterator($iterator, '~^.+\.'.$filesExtension.'$~i', RecursiveRegexIterator::GET_MATCH);
-		$fileList = iterator_to_array($regex);
-		array_walk($fileList, function(&$value, $key, $path) {
-			$value = str_replace($path, '', $value[0]);
-		}, $directoryPath);
-		
-		return $this->buildArray($fileList, $filesExtension);
+		return $this->buildArray($directoryPath, sprintf('~\.%s$~', $filesExtension));
 	}
 	
-	private function buildArray(array $fileList, $filesExtension)
+	/**
+	 * Method called recursively to build the file tree.
+	 * 
+	 * @param String $directoryPath : The path of the current directory whom files are beeing listed from.
+	 * @param String $filesExtension : the files extension(s) we want to display. It's a regex used in a preg_match on each file.
+	 * @param String $pathPrefix : Use for deepness. On the first level it is '' and then the folders are added.
+	 * 
+	 * @return array : e representation of the file tree.
+	 */
+	private function buildArray($directoryPath, $filesExtension, $pathPrefix = '')
 	{
-		$newFileList = [];
-		foreach($fileList as $filePath => $fileName) {
-			if(preg_match('~^(.*)/.*\.'.$filesExtension.'$~', $fileName, $matches)) {
-				$key = $matches[1];
-				if(!array_key_exists($key, $newFileList)) {
-					$newFileList[$key] = [];
+		$list = scandir($directoryPath);
+		$fileList = [];
+		foreach($list as $file) {
+			if($file !== '.' && $file !== '..') {
+				if(is_dir($newDirectoryPath = $directoryPath.'/'.$file)) {
+					$fileList[urlencode($pathPrefix.$file)] = $this->buildArray($newDirectoryPath, $filesExtension, $pathPrefix.$file.'/');
+				} elseif(preg_match($filesExtension, $file)) {
+					$fileList[urlencode($pathPrefix.$file)] = $file;
 				}
-				$newFileList[$key][urlencode($fileName)] = str_replace($key.'/', '', $fileName);
-			}
-			else {
-				$newFileList[urlencode($fileName)] = $fileName;
 			}
 		}
 		
-		return $newFileList;
+		return $fileList;
 	}
 }
