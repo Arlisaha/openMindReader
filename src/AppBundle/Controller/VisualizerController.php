@@ -11,7 +11,7 @@ class VisualizerController extends Controller
 {
     public function htmlAction(Request $request, $fileName)
     {
-		$filePath = $this->container->getParameter('app.file.folder_path').$fileName;
+		$filePath = $this->container->getParameter('app.file.folder_path').urldecode($fileName);
 		
 		if(!is_file($filePath)) {
 			throw new \InvalidArgumentException(sprintf('The given file %s is not a valid filename.', $filePath));
@@ -36,6 +36,7 @@ class VisualizerController extends Controller
 						GenericHTMLConverter::ATTRIBUTES_KEY => [],
 					],
 				],
+				GenericHTMLConverter::MAIN_TAG_MERGE_STYLE => false,
 				GenericHTMLConverter::MAIN_ICON_KEY => [
 					GenericHTMLConverter::DISPLAY_ICON_KEY => true,
 					GenericHTMLConverter::PATH_ICON_KEY    => [
@@ -58,7 +59,21 @@ class VisualizerController extends Controller
 		
         return $this->render('AppBundle::visualizer/html.html.twig', [
             'html_string' => $htmlDocument->saveHTML(),
-            'file_name'   => $fileName,
+            'file_name'   => urldecode($fileName),
+        ]);
+    }
+    
+    public function svgAction(Request $request, $fileName)
+    {
+		$filePath = $this->container->getParameter('app.file.folder_path').$fileName;
+		
+		if(!is_file($filePath)) {
+			throw new \InvalidArgumentException(sprintf('The given file %s is not a valid filename.', $filePath));
+		}
+		
+        return $this->render('AppBundle::visualizer/svg.html.twig', [
+            'document'  => $this->container->get('app.parser')->buildDocumentTreeFromFilePath($filePath),
+            'file_name' => urldecode($fileName),
         ]);
     }
 }
